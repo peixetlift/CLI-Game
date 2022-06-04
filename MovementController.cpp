@@ -1,30 +1,43 @@
 #include "MovementController.h"
+#include "Utilities.h"
+
+char getCharFromKeyboard() {
+    char input;
+    system("stty raw");
+    input = getchar();
+    system("stty cooked");
+    return input;
+}
 
 void moveWithWASD(Fighter& fighter) {
-    char keypress;
-    keypress = std::getchar(); 
-    
+    int keypress;
+    keypress = getCharFromKeyboard();
     Point position = fighter.getPosition();
     switch(keypress) {
         case 'w':
         case 'W':
-            position.y++;
+            if(position.y)
+                position.y--;
             fighter.move(position);
             break;
         case 'a':
         case 'A':
-            position.x--;
+            if(position.x)
+                position.x--;
             fighter.move(position);
             break;
         case 's':
         case 'S':
-            position.y--;
+            if(position.y < getNumberOfTerminalRows()-15)
+                position.y++;
             fighter.move(position);
             break;
         case 'd':
         case 'D':
-            position.x++;
+            if(position.x < getNumberOfTerminalColumns()-15)
+                position.x++;
             fighter.move(position);
             break;
     }
 }
+

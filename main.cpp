@@ -10,7 +10,10 @@ int main() {
 
     Point position {0, 0};
 
-    moveWithWASD((*wiz));
+    while(1) {
+        grid->refresh();
+        moveWithWASD(*wiz);
+    }
 
     delete grid;
     delete wiz;

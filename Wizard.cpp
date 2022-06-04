@@ -7,6 +7,7 @@ Wizard::Wizard(Grid* grid) {
     this->position.x = 0;
     this->position.y = 0;
     this->fire = new Fire();
+    grid->setAt(this->position, this->icon);
     std::cout << "[Wizard] Wizard spawned" << std::endl;
 }
 
