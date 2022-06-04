@@ -12,6 +12,7 @@ public :
     void attack();
     void defend();
     void setPosition(Point point);
+    Point getPosition();
     void move(Point point);
     void shoot();
     void setProjectile(Projectile* projectile);

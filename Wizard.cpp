@@ -29,6 +29,10 @@ void Wizard::setPosition(Point point) {
     this->position.y = point.y;
 }
 
+Point Wizard::getPosition() {
+    return this->position;
+}
+
 void Wizard::move(Point point) {
     this->grid->clearAt(point);
     this->setPosition(point);
@@ -39,7 +43,8 @@ void Wizard::shoot() {
     this->fire->setSpeed(2);
     int numberOfColumns = getNumberOfTerminalColumns();
     Point firePosition = this->position;
-    for(; firePosition.x < numberOfColumns; firePosition.x++) {
+    int distanceToTravel = (numberOfColumns - firePosition.x) / 2;
+    for(; firePosition.x + distanceToTravel < numberOfColumns; firePosition.x++) {
         this->grid->setAt(firePosition, this->fire->getIcon());
         this->grid->refresh(this->fire->getSpeed());
         this->grid->clearAt(firePosition);

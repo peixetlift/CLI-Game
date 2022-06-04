@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Wizard.h"
 #include "Grid.h"
+#include "MovementController.h"
 
 int main() {
     std::cout << "[Main] starting" << std::endl;
@@ -9,13 +10,7 @@ int main() {
 
     Point position {0, 0};
 
-    while (position.x < 30) {
-        wiz->move(position);
-        position.x++;
-        position.y++;
-        grid->refresh();
-    }
-    wiz->shoot();
+    moveWithWASD((*wiz));
 
     delete grid;
     delete wiz;
