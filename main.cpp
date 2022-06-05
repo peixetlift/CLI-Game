@@ -1,19 +1,25 @@
 #include <iostream>
 #include "Wizard.h"
 #include "Grid.h"
-#include "MovementController.h"
+#include "ActionController.h"
 
 int main() {
     std::cout << "[Main] starting" << std::endl;
     Grid* grid = new Grid();
     Wizard* wiz = new Wizard(grid);
+    ActionController* wizController = new ActionController(wiz);
 
+    char keypress = '0';
     Point position {0, 0};
 
-    while(1) {
+    grid->refresh();
+    while(keypress != 'q' && keypress != 'Q') {
+        keypress = getCharFromKeyboard();
+        wizController->runControls(keypress);
         grid->refresh();
-        moveWithWASD(*wiz);
     }
+
+    clearScreen();
 
     delete grid;
     delete wiz;

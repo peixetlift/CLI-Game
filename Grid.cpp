@@ -46,7 +46,7 @@ void Grid::printGrid() {
 
 void Grid::refresh(int speed) {
     using namespace std::chrono_literals;
-    speed = (!speed) ? 1 : speed;
+    speed = (!speed) ? 5 : speed;
     clearScreen();
     printGrid();
     std::this_thread::sleep_for(100ms/speed);

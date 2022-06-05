@@ -9,5 +9,6 @@ struct Point {
 void clearScreen();
 int getNumberOfTerminalColumns();
 int getNumberOfTerminalRows();
+char getCharFromKeyboard();
 
 #endif

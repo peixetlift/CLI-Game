@@ -20,3 +20,13 @@ int getNumberOfTerminalRows() {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
     return w.ws_row;
 }
+
+char getCharFromKeyboard() {
+    char input;
+    system("stty raw");
+    input = getchar();
+    system("stty cooked");
+    return input;
+}
+
+

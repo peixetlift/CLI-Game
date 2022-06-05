@@ -17,7 +17,7 @@ Wizard::~Wizard() {
 
 
 void Wizard::attack() {
-    std::cout << "[Wizard] Wizard attacked" << std::endl;
+    this->shoot();
 }
 
 void Wizard::defend() {
@@ -41,9 +41,10 @@ void Wizard::move(Point point) {
 }
 
 void Wizard::shoot() {
-    this->fire->setSpeed(2);
+    this->fire->setSpeed(10);
     int numberOfColumns = getNumberOfTerminalColumns();
     Point firePosition = this->position;
+    firePosition.x++;
     int distanceToTravel = (numberOfColumns - firePosition.x) / 2;
     for(; firePosition.x + distanceToTravel < numberOfColumns; firePosition.x++) {
         this->grid->setAt(firePosition, this->fire->getIcon());
